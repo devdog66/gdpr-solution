@@ -1,0 +1,10 @@
+﻿@{
+    bool showAds = (bool)ViewData["ShowAds"];
+    if (showAds)
+    {
+        <div class="">
+            <iframe></iframe>
+            <div><small>Advertisement by ACME Inc.</small> <!-- or whatever --> </div>
+        </div>
+    }
+}

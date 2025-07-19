@@ -1,0 +1,19 @@
+﻿@using WebUtils.Core.Web
+@using WebUtils.Services
+@{
+    @inject IConsentServiceClient consentFeature; // Inject the consent feature service
+    if (consentFeature != null) // Ensure consentFeature is not null
+    {
+        var contextFacade = new HttpContextAdapter(Context);
+        var consentResponse = consentFeature.GetConsent(contextFacade);
+        var showAds = consentResponse.CookiePrefs.Marketing;
+
+        if (showAds)
+        {
+            <div class="">
+                <iframe style="max-width: 250px"></iframe>
+                <div><small>Advertisement by ACME Inc.</small> <!-- or whatever --> </div>
+            </div>
+        }
+    }
+}

@@ -1,0 +1,52 @@
+﻿@{
+    bool showBanner = (bool)ViewData["ShowBanner"];
+    if (showBanner)
+    {
+        <!--Cookie banner-->
+        <div class="cookie-consent">
+            <span class="cookie-text">
+                We use cookies to ensure you have the best browsing experience on our website. By using our site, you
+                acknowledge that you have read and understood our
+                <a href="/page/privacy" target="_blank"><u>Privacy Policy</u></a>
+                You can manage cookies <a href="/cookiePrefs" target="_blank"><u>here</u></a>
+            </span>
+            <form id="cookieConsentForm" action="/cookiePrefs/Post" method="post">
+                @Html.AntiForgeryToken()
+                <button id="btnConsent" class="consent-btn">
+                    Got it!!
+                </button>
+            </form>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var affn = document.getElementsByName('__RequestVerificationToken')[0];
+                var rvt = affn.getAttribute('value');
+                var btn = document.getElementById('btnConsent');
+                var frm = document.getElementById('cookieConsentForm');
+                if (btn) {
+                    btn.disabled = false
+                    btn.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        frm.submit();
+                        /*
+                        fetch("/cookiePrefs/Post", {
+                            method: 'POST',
+                            headers: {
+                                '__RequestVerificationToken': rvt,
+                                'X-Requested-With': 'XMLHttpRequest'
+                            },
+                            credentials: 'same-origin'
+                        })
+                            .then(function (response) {
+                                if (response.ok) {
+                                    document.querySelector('.cookie-consent').style.display = 'none';
+                                }
+                            });
+                        */
+                    });
+                }
+            });
+        </script>
+    }
+}

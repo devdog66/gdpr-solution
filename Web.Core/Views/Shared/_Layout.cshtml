@@ -1,0 +1,19 @@
+﻿<html>
+<head>
+    <partial name="_Meta.cshtml"/>
+    <partial name="_Preloads.cshtml"/>
+</head>
+<body>
+    <partial name="_Header.cshtml"/>
+    <div>
+    <main>
+        @RenderBody()
+    </main>
+    <aside>
+        <partial name="_Sidebar.cshtml"/>
+    </aside>
+    </div>
+    <partial name="_Footer.cshtml"/>
+    <partial name="_ConsentBanner.cshtml" />
+</body>
+</html>

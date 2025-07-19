@@ -1,0 +1,19 @@
+﻿<html>
+<head>
+    @Html.Partial("_Meta")
+    @Html.Partial("_Preloads")
+</head>
+<body>
+    @Html.Partial("_Header")
+    <div>
+        <main>
+            @RenderBody()
+        </main>
+        <aside>
+            @Html.Action("Index", "Sidebar")
+        </aside>
+    </div>
+    @Html.Partial("_Footer")
+    @Html.Action("Index", "ConsentBanner")
+</body>
+</html>

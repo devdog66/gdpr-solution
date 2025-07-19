@@ -6,6 +6,8 @@
 # custom solution settings
 secrets.json
 node_modules
+.vscode
+coverage
 
 
 # User-specific files

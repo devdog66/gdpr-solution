@@ -98,6 +98,8 @@ internal class Program
 
     internal static void SetupServices(IServiceCollection services, ILogger logger)
     {
+        services.AddMemoryCache();
+
         //Setup Dependencies
         services.AddScoped<HtmlContent>();
         //services.AddScoped<IRequestLogger, WebUtils.Standard.RequestLogger>();

@@ -13,13 +13,13 @@ namespace WebUtils.Standard.Web
             _cache = cache;
         }
 
-        public void Set<T>(string key, T value, DateTimeOffset? absoluteExpiration = null, TimeSpan? slidingExpiration = null)
+        public void Set<T>(string key, T value, DateTimeOffset? absoluteExpiration = null)
         {
-            var entry = _cache.CreateEntry(key);
-            entry.Value = value;
-            entry.AbsoluteExpiration = absoluteExpiration;
-            entry.SlidingExpiration = slidingExpiration;
-
+            using (var entry = _cache.CreateEntry(key))
+            {
+                entry.Value = value;
+                entry.AbsoluteExpiration = absoluteExpiration;
+            }
         }
 
         public bool TryGetValue<T>(string key, out T value)
